@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ruoyi.system.mapper.StockOrderMapper">
+
+	<resultMap type="StockOrder" id="StockOrderResult">
+		<result property="orderId" column="order_id" />
+		<result property="traderId" column="trader_id" />
+		<result property="traderName" column="trader_name" />
+		<result property="goodsId" column="goods_id" />
+		<result property="goodsName" column="goods_name" />
+		<result property="recordId" column="record_id" />
+		<result property="tradeType" column="trade_type" />
+		<result property="tradeComment" column="trade_comment" />
+		<result property="tradeMoney" column="trade_money" />
+		<result property="payType" column="pay_type" />
+		<result property="blanceDue" column="blance_due" />
+		<result property="tradeTime" column="trade_time" />
+	</resultMap>
+
+	<sql id="selectStockOrderVo">
+		select o.order_id, o.trader_id, t.trader_name, o.goods_id, o.goods_name,
+		o.record_id, o.trade_type, o.trade_comment, o.trade_money, o.pay_type,
+		o.blance_due, o.trade_time
+		from sys_stock_order o
+		left join sys_stock_trader t on o.trader_id = t.trader_id
+		left join sys_stock_record r on o.record_id = r.record_id
+	</sql>
+
+	<select id="selectStockOrderList" parameterType="StockOrder"
+		resultMap="StockOrderResult">
+		<include refid="selectStockOrderVo" />
+		<where>
+			<if test="orderId != null "> and order_id = #{orderId}</if>
+			<if test="traderId != null "> and trader_id = #{traderId}</if>
+			<if test="traderName != null  and traderName != '' "> and trader_name = #{traderName}</if>
+			<if test="goodsId != null  and goodsId != '' "> and goods_id = #{goodsId}</if>
+			<if test="goodsName != null  and goodsName != '' "> and goods_name = #{goodsName}</if>
+			<if test="recordId != null "> and record_id = #{recordId}</if>
+			<if test="tradeType != null "> and trade_type = #{tradeType}</if>
+			<if test="tradeComment != null  and tradeComment != '' "> and trade_comment = #{tradeComment}</if>
+			<if test="tradeMoney != null "> and trade_money = #{tradeMoney}</if>
+			<if test="payType != null "> and pay_type = #{payType}</if>
+			<if test="blanceDue != null "> and blance_due = #{blanceDue}</if>
+			<if test="tradeTime != null "> and trade_time = #{tradeTime}</if>
+		</where>
+	</select>
+
+	<select id="selectStockOrderById" parameterType="Long"
+		resultMap="StockOrderResult">
+		<include refid="selectStockOrderVo" />
+		where order_id = #{orderId}
+	</select>
+
+	<insert id="insertStockOrder" parameterType="StockOrder"
+		useGeneratedKeys="true" keyProperty="orderId">
+		insert into sys_stock_order
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="traderId != null  ">trader_id,</if>
+			<if test="traderName != null  and traderName != ''  ">trader_name,</if>
+			<if test="goodsId != null  and goodsId != ''  ">goods_id,</if>
+			<if test="goodsName != null  and goodsName != ''  ">goods_name,</if>
+			<if test="recordId != null  ">record_id,</if>
+			<if test="tradeType != null  ">trade_type,</if>
+			<if test="tradeComment != null  and tradeComment != ''  ">trade_comment,</if>
+			<if test="tradeMoney != null  ">trade_money,</if>
+			<if test="payType != null  ">pay_type,</if>
+			<if test="blanceDue != null  ">blance_due,</if>
+			<if test="tradeTime != null  ">trade_time,</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="traderId != null  ">#{traderId},</if>
+			<if test="traderName != null  and traderName != ''  ">#{traderName},</if>
+			<if test="goodsId != null  and goodsId != ''  ">#{goodsId},</if>
+			<if test="goodsName != null  and goodsName != ''  ">#{goodsName},</if>
+			<if test="recordId != null  ">#{recordId},</if>
+			<if test="tradeType != null  ">#{tradeType},</if>
+			<if test="tradeComment != null  and tradeComment != ''  ">#{tradeComment},</if>
+			<if test="tradeMoney != null  ">#{tradeMoney},</if>
+			<if test="payType != null  ">#{payType},</if>
+			<if test="blanceDue != null  ">#{blanceDue},</if>
+			<if test="tradeTime != null  ">#{tradeTime},</if>
+		</trim>
+	</insert>
+
+	<update id="updateStockOrder" parameterType="StockOrder">
+		update sys_stock_order
+		<trim prefix="SET" suffixOverrides=",">
+			<if test="traderId != null  ">trader_id = #{traderId},</if>
+			<if test="traderName != null  and traderName != ''  ">trader_name = #{traderName},</if>
+			<if test="recordName != null  and recordName != ''  ">record_name = #{recordName},</if>
+			<if test="recordId != null  ">record_id = #{recordId},</if>
+			<if test="tradeType != null  ">trade_type = #{tradeType},</if>
+			<if test="tradeComment != null  and tradeComment != ''  ">trade_comment = #{tradeComment},</if>
+			<if test="tradeMoney != null  ">trade_money = #{tradeMoney},</if>
+			<if test="payType != null  ">pay_type = #{payType},</if>
+			<if test="blanceDue != null  ">blance_due = #{blanceDue},</if>
+			<if test="tradeTime != null  ">trade_time = #{tradeTime},</if>
+		</trim>
+		where order_id = #{orderId}
+	</update>
+
+	<delete id="deleteStockOrderById" parameterType="Long">
+		delete from sys_stock_order where order_id = #{orderId}
+	</delete>
+
+	<delete id="deleteStockOrderByIds" parameterType="String">
+		delete from sys_stock_order where order_id in
+		<foreach item="orderId" collection="array" open="(" separator=","
+			close=")">
+			#{orderId}
+		</foreach>
+	</delete>
+
+</mapper>

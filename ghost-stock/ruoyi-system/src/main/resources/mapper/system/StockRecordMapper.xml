@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ruoyi.system.mapper.StockRecordMapper">
+
+	<resultMap type="StockRecord" id="StockRecordResult">
+		<result property="recordId" column="record_id" />
+		<result property="goodsId" column="goods_id" />
+		<result property="nameSpec" column="name_spec" />
+		<result property="amountPrice" column="amount_price" />
+		<result property="type" column="type" />
+		<result property="beforeStock" column="before_stock" />
+		<result property="afterStock" column="after_stock" />
+		<result property="totalMoney" column="total_money" />
+		<result property="traderId" column="trader_id" />
+		<result property="traderName" column="trader_name" />
+		<result property="operateTime" column="operate_time" />
+	</resultMap>
+
+	<sql id="selectStockRecordVo">
+		select record_id, goods_id, name_spec, amount_price, type, before_stock,
+		after_stock, total_money, trader_id, trader_name, operate_time from
+		sys_stock_record
+	</sql>
+
+	<select id="selectStockRecordList" parameterType="StockRecord"
+		resultMap="StockRecordResult">
+		<include refid="selectStockRecordVo" />
+		<where>
+			<if test="recordId != null "> and record_id = #{recordId}</if>
+			<if test="goodsId != null "> and goods_id = #{goodsId}</if>
+			<if test="nameSpec != null  and nameSpec != '' "> and name_spec = #{nameSpec}</if>
+			<if test="amountPrice != null "> and amount_price = #{amountPrice}</if>
+			<if test="type != null "> and type = #{type}</if>
+			<if test="beforeStock != null "> and before_stock = #{beforeStock}</if>
+			<if test="afterStock != null "> and after_stock = #{afterStock}</if>
+			<if test="totalMoney != null "> and total_money = #{totalMoney}</if>
+			<if test="traderId != null "> and trader_id = #{traderId}</if>
+			<if test="traderName != null  and traderName != '' "> and trader_name = #{traderName}</if>
+			<if test="operateTime != null "> and operate_time = #{operateTime}</if>
+		</where>
+	</select>
+
+	<select id="selectStockRecordById" parameterType="Long"
+		resultMap="StockRecordResult">
+		<include refid="selectStockRecordVo" />
+		where record_id = #{recordId}
+	</select>
+
+	<insert id="insertStockRecord" parameterType="StockRecord"
+		useGeneratedKeys="true" keyProperty="recordId">
+		insert into sys_stock_record
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="goodsId != null  ">goods_id,</if>
+			<if test="nameSpec != null  and nameSpec != ''  ">name_spec,</if>
+			<if test="amountPrice != null  ">amount_price,</if>
+			<if test="type != null  ">type,</if>
+			<if test="beforeStock != null  ">before_stock,</if>
+			<if test="afterStock != null  ">after_stock,</if>
+			<if test="totalMoney != null  ">total_money,</if>
+			<if test="traderId != null  ">trader_id,</if>
+			<if test="traderName != null  and traderName != ''  ">trader_name,</if>
+			<if test="operateTime != null  ">operate_time,</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="goodsId != null  ">#{goodsId},</if>
+			<if test="nameSpec != null  and nameSpec != ''  ">#{nameSpec},</if>
+			<if test="amountPrice != null  ">#{amountPrice},</if>
+			<if test="type != null  ">#{type},</if>
+			<if test="beforeStock != null  ">#{beforeStock},</if>
+			<if test="afterStock != null  ">#{afterStock},</if>
+			<if test="totalMoney != null  ">#{totalMoney},</if>
+			<if test="traderId != null  ">#{traderId},</if>
+			<if test="traderName != null  and traderName != ''  ">#{traderName},</if>
+			<if test="operateTime != null  ">#{operateTime},</if>
+		</trim>
+	</insert>
+
+	<update id="updateStockRecord" parameterType="StockRecord">
+		update sys_stock_record
+		<trim prefix="SET" suffixOverrides=",">
+			<if test="goodsId != null  ">goods_id = #{goodsId},</if>
+			<if test="nameSpec != null  and nameSpec != ''  ">name_spec = #{nameSpec},</if>
+			<if test="amountPrice != null  ">amount_price = #{amountPrice},</if>
+			<if test="type != null  ">type = #{type},</if>
+			<if test="beforeStock != null  ">before_stock = #{beforeStock},</if>
+			<if test="afterStock != null  ">after_stock = #{afterStock},</if>
+			<if test="totalMoney != null  ">total_money = #{totalMoney},</if>
+			<if test="traderId != null  ">trader_id = #{traderId},</if>
+			<if test="traderName != null  and traderName != ''  ">trader_name = #{traderName},</if>
+			<if test="operateTime != null  ">operate_time = #{operateTime},</if>
+		</trim>
+		where record_id = #{recordId}
+	</update>
+
+	<delete id="deleteStockRecordById" parameterType="Long">
+		delete from sys_stock_record where record_id = #{recordId}
+	</delete>
+
+	<delete id="deleteStockRecordByIds" parameterType="String">
+		delete from sys_stock_record where record_id in
+		<foreach item="recordId" collection="array" open="("
+			separator="," close=")">
+			#{recordId}
+		</foreach>
+	</delete>
+
+</mapper>

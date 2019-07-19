@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="zh" xmlns:th="http://www.thymeleaf.org">
+<head>
+<th:block th:include="include :: header('新增库存交易订单')" />
+</head>
+<body class="white-bg">
+	<div class="wrapper wrapper-content animated fadeInRight ibox-content">
+		<form class="form-horizontal m" id="form-stockOrder-add">
+			<div class="form-group">
+				<label class="col-sm-3 control-label">交易方ID：</label>
+				<div class="col-sm-8">
+					<input id="traderId" name="traderId" class="form-control"
+						type="text">
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-sm-3 control-label">交易方姓名：</label>
+				<div class="col-sm-8">
+					<input id="traderName" name="traderName" class="form-control"
+						type="text">
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-sm-3 control-label">交易商品：</label>
+				<div class="col-sm-8">
+					<input id="recordName" name="recordName" class="form-control"
+						type="text">
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-sm-3 control-label">出入库记录编号：</label>
+				<div class="col-sm-8">
+					<input id="recordId" name="recordId" class="form-control"
+						type="text">
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-sm-3 control-label">交易类型 0-购买 1-售出 2-还款：</label>
+				<div class="col-sm-8">
+					<input id="tradeType" name="tradeType" class="form-control"
+						type="text">
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-sm-3 control-label">交易备注：</label>
+				<div class="col-sm-8">
+					<input id="tradeComment" name="tradeComment" class="form-control"
+						type="text">
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-sm-3 control-label">交易金额：</label>
+				<div class="col-sm-8">
+					<input id="tradeMoney" name="tradeMoney" class="form-control"
+						type="text">
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-sm-3 control-label">支付方式 0-赊账 1-微信 2-支付宝
+					3-银行卡 4-现金：</label>
+				<div class="col-sm-8">
+					<input id="payType" name="payType" class="form-control" type="text">
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-sm-3 control-label">结欠金额：</label>
+				<div class="col-sm-8">
+					<input id="blanceDue" name="blanceDue" class="form-control"
+						type="text">
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-sm-3 control-label">交易时间：</label>
+				<div class="col-sm-8">
+					<input id="tradeTime" name="tradeTime" class="form-control"
+						type="text">
+				</div>
+			</div>
+		</form>
+	</div>
+	<div th:include="include::footer"></div>
+	<script type="text/javascript">
+		var prefix = ctx + "system/stockOrder"
+		$("#form-stockOrder-add").validate({
+			rules:{
+				xxxx:{
+					required:true,
+				},
+			},
+			focusCleanup: true
+		});
+		
+		function submitHandler() {
+	        if ($.validate.form()) {
+	            $.operate.save(prefix + "/add", $('#form-stockOrder-add').serialize());
+	        }
+	    }
+	</script>
+</body>
+</html>

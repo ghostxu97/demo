@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ruoyi.system.mapper.StockGoodsMapper">
+
+	<resultMap type="StockGoods" id="StockGoodsResult">
+		<result property="goodsId" column="goods_id" />
+		<result property="goodsName" column="goods_name" />
+		<result property="spec" column="spec" />
+		<result property="unit" column="unit" />
+		<result property="price" column="price" />
+		<result property="inventory" column="inventory" />
+		<result property="createTime" column="create_time" />
+		<result property="createBy" column="create_by" />
+		<result property="createId" column="create_id" />
+		<result property="updateTime" column="update_time" />
+		<result property="updateBy" column="update_by" />
+		<result property="updateId" column="update_id" />
+	</resultMap>
+
+	<sql id="selectStockGoodsVo">
+		select goods_id, goods_name, spec, unit, price, inventory, create_time,
+		create_by, create_id, update_time, update_by, update_id from
+		sys_stock_goods
+	</sql>
+
+	<select id="selectStockGoodsList" parameterType="StockGoods"
+		resultMap="StockGoodsResult">
+		<include refid="selectStockGoodsVo" />
+		<where>
+			<if test="goodsId != null "> and goods_id = #{goodsId}</if>
+			<if test="goodsName != null  and goodsName != '' "> and goods_name = #{goodsName}</if>
+			<if test="spec != null  and spec != '' "> and spec = #{spec}</if>
+			<if test="unit != null  and unit != '' "> and unit = #{unit}</if>
+			<if test="price != null "> and price = #{price}</if>
+			<if test="inventory != null "> and inventory = #{inventory}</if>
+			<if test="createTime != null "> and create_time = #{createTime}</if>
+			<if test="createBy != null  and createBy != '' "> and create_by = #{createBy}</if>
+			<if test="createId != null "> and create_id = #{createId}</if>
+			<if test="updateTime != null "> and update_time = #{updateTime}</if>
+			<if test="updateBy != null  and updateBy != '' "> and update_by = #{updateBy}</if>
+			<if test="updateId != null "> and update_id = #{updateId}</if>
+		</where>
+	</select>
+
+	<select id="selectStockGoodsById" parameterType="Long"
+		resultMap="StockGoodsResult">
+		<include refid="selectStockGoodsVo" />
+		where goods_id = #{goodsId}
+	</select>
+
+	<insert id="insertStockGoods" parameterType="StockGoods"
+		useGeneratedKeys="true" keyProperty="goodsId">
+		insert into sys_stock_goods
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="goodsName != null  and goodsName != ''  ">goods_name,</if>
+			<if test="spec != null  and spec != ''  ">spec,</if>
+			<if test="unit != null  and unit != ''  ">unit,</if>
+			<if test="price != null  ">price,</if>
+			<if test="inventory != null  ">inventory,</if>
+			<if test="createTime != null  ">create_time,</if>
+			<if test="createBy != null  and createBy != ''  ">create_by,</if>
+			<if test="createId != null  ">create_id,</if>
+			<if test="updateTime != null  ">update_time,</if>
+			<if test="updateBy != null  and updateBy != ''  ">update_by,</if>
+			<if test="updateId != null  ">update_id,</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="goodsName != null  and goodsName != ''  ">#{goodsName},</if>
+			<if test="spec != null  and spec != ''  ">#{spec},</if>
+			<if test="unit != null  and unit != ''  ">#{unit},</if>
+			<if test="price != null  ">#{price},</if>
+			<if test="inventory != null  ">#{inventory},</if>
+			<if test="createTime != null  ">#{createTime},</if>
+			<if test="createBy != null  and createBy != ''  ">#{createBy},</if>
+			<if test="createId != null  ">#{createId},</if>
+			<if test="updateTime != null  ">#{updateTime},</if>
+			<if test="updateBy != null  and updateBy != ''  ">#{updateBy},</if>
+			<if test="updateId != null  ">#{updateId},</if>
+		</trim>
+	</insert>
+
+	<update id="updateStockGoods" parameterType="StockGoods">
+		update sys_stock_goods
+		<trim prefix="SET" suffixOverrides=",">
+			<if test="goodsName != null  and goodsName != ''  ">goods_name = #{goodsName},</if>
+			<if test="spec != null  and spec != ''  ">spec = #{spec},</if>
+			<if test="unit != null  and unit != ''  ">unit = #{unit},</if>
+			<if test="price != null  ">price = #{price},</if>
+			<if test="inventory != null  ">inventory = #{inventory},</if>
+			<if test="createTime != null  ">create_time = #{createTime},</if>
+			<if test="createBy != null  and createBy != ''  ">create_by = #{createBy},</if>
+			<if test="createId != null  ">create_id = #{createId},</if>
+			<if test="updateTime != null  ">update_time = #{updateTime},</if>
+			<if test="updateBy != null  and updateBy != ''  ">update_by = #{updateBy},</if>
+			<if test="updateId != null  ">update_id = #{updateId},</if>
+		</trim>
+		where goods_id = #{goodsId}
+	</update>
+
+	<delete id="deleteStockGoodsById" parameterType="Long">
+		delete from sys_stock_goods where goods_id = #{goodsId}
+	</delete>
+
+	<delete id="deleteStockGoodsByIds" parameterType="String">
+		delete from sys_stock_goods where goods_id in
+		<foreach item="goodsId" collection="array" open="(" separator=","
+			close=")">
+			#{goodsId}
+		</foreach>
+	</delete>
+
+</mapper>

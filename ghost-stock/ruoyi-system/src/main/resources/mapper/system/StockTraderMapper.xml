@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ruoyi.system.mapper.StockTraderMapper">
+
+	<resultMap type="StockTrader" id="StockTraderResult">
+		<result property="traderId" column="trader_id" />
+		<result property="traderName" column="trader_name" />
+		<result property="nickname" column="nickname" />
+		<result property="balanceDue" column="balance_due" />
+		<result property="phone" column="phone" />
+		<result property="address" column="address" />
+		<result property="createBy" column="create_by" />
+		<result property="createId" column="create_id" />
+		<result property="createTime" column="create_time" />
+		<result property="updateId" column="update_id" />
+		<result property="updateBy" column="update_by" />
+		<result property="updateTime" column="update_time" />
+	</resultMap>
+
+	<sql id="selectStockTraderVo">
+		select trader_id, trader_name, nickname, balance_due, phone, address,
+		create_by, create_id, create_time, update_id, update_by, update_time
+		from sys_stock_trader
+	</sql>
+
+	<select id="selectStockTraderList" parameterType="StockTrader"
+		resultMap="StockTraderResult">
+		<include refid="selectStockTraderVo" />
+		<where>
+			<if test="traderId != null "> and trader_id = #{traderId}</if>
+			<if test="traderName != null  and traderName != '' "> and trader_name = #{traderName}</if>
+			<if test="nickname != null  and nickname != '' "> and nickname = #{nickname}</if>
+			<if test="balanceDue != null "> and balance_due = #{balanceDue}</if>
+			<if test="phone != null  and phone != '' "> and phone = #{phone}</if>
+			<if test="address != null  and address != '' "> and address = #{address}</if>
+			<if test="createBy != null  and createBy != '' "> and create_by = #{createBy}</if>
+			<if test="createId != null "> and create_id = #{createId}</if>
+			<if test="createTime != null "> and create_time = #{createTime}</if>
+			<if test="updateId != null "> and update_id = #{updateId}</if>
+			<if test="updateBy != null  and updateBy != '' "> and update_by = #{updateBy}</if>
+			<if test="updateTime != null "> and update_time = #{updateTime}</if>
+		</where>
+	</select>
+
+	<select id="selectStockTraderById" parameterType="Long"
+		resultMap="StockTraderResult">
+		<include refid="selectStockTraderVo" />
+		where trader_id = #{traderId}
+	</select>
+
+	<insert id="insertStockTrader" parameterType="StockTrader"
+		useGeneratedKeys="true" keyProperty="traderId">
+		insert into sys_stock_trader
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="traderName != null  and traderName != ''  ">trader_name,</if>
+			<if test="nickname != null  and nickname != ''  ">nickname,</if>
+			<if test="balanceDue != null  ">balance_due,</if>
+			<if test="phone != null  and phone != ''  ">phone,</if>
+			<if test="address != null  and address != ''  ">address,</if>
+			<if test="createBy != null  and createBy != ''  ">create_by,</if>
+			<if test="createId != null  ">create_id,</if>
+			<if test="createTime != null  ">create_time,</if>
+			<if test="updateId != null  ">update_id,</if>
+			<if test="updateBy != null  and updateBy != ''  ">update_by,</if>
+			<if test="updateTime != null  ">update_time,</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="traderName != null  and traderName != ''  ">#{traderName},</if>
+			<if test="nickname != null  and nickname != ''  ">#{nickname},</if>
+			<if test="balanceDue != null  ">#{balanceDue},</if>
+			<if test="phone != null  and phone != ''  ">#{phone},</if>
+			<if test="address != null  and address != ''  ">#{address},</if>
+			<if test="createBy != null  and createBy != ''  ">#{createBy},</if>
+			<if test="createId != null  ">#{createId},</if>
+			<if test="createTime != null  ">#{createTime},</if>
+			<if test="updateId != null  ">#{updateId},</if>
+			<if test="updateBy != null  and updateBy != ''  ">#{updateBy},</if>
+			<if test="updateTime != null  ">#{updateTime},</if>
+		</trim>
+	</insert>
+
+	<update id="updateStockTrader" parameterType="StockTrader">
+		update sys_stock_trader
+		<trim prefix="SET" suffixOverrides=",">
+			<if test="traderName != null  and traderName != ''  ">trader_name = #{traderName},</if>
+			<if test="nickname != null  and nickname != ''  ">nickname = #{nickname},</if>
+			<if test="balanceDue != null  ">balance_due = #{balanceDue},</if>
+			<if test="phone != null  and phone != ''  ">phone = #{phone},</if>
+			<if test="address != null  and address != ''  ">address = #{address},</if>
+			<if test="createBy != null  and createBy != ''  ">create_by = #{createBy},</if>
+			<if test="createId != null  ">create_id = #{createId},</if>
+			<if test="createTime != null  ">create_time = #{createTime},</if>
+			<if test="updateId != null  ">update_id = #{updateId},</if>
+			<if test="updateBy != null  and updateBy != ''  ">update_by = #{updateBy},</if>
+			<if test="updateTime != null  ">update_time = #{updateTime},</if>
+		</trim>
+		where trader_id = #{traderId}
+	</update>
+
+	<delete id="deleteStockTraderById" parameterType="Long">
+		delete from sys_stock_trader where trader_id = #{traderId}
+	</delete>
+
+	<delete id="deleteStockTraderByIds" parameterType="String">
+		delete from sys_stock_trader where trader_id in
+		<foreach item="traderId" collection="array" open="("
+			separator="," close=")">
+			#{traderId}
+		</foreach>
+	</delete>
+
+</mapper>

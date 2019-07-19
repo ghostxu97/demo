@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="zh" xmlns:th="http://www.thymeleaf.org">
+<head>
+<th:block th:include="include :: header('新增库存货品')" />
+</head>
+<body class="white-bg">
+	<div class="wrapper wrapper-content animated fadeInRight ibox-content">
+		<form class="form-horizontal m" id="form-stockGoods-add">
+			<div class="form-group">
+				<label class="col-sm-3 control-label">货品名称：</label>
+				<div class="col-sm-8">
+					<input id="goodsName" name="goodsName" class="form-control"
+						type="text">
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-sm-3 control-label">货品规格：</label>
+				<div class="col-sm-8">
+					<input id="spec" name="spec" class="form-control" type="text">
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-sm-3 control-label">货品单位：</label>
+				<div class="col-sm-8">
+					<input id="unit" name="unit" class="form-control" type="text">
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-sm-3 control-label">货品单价：</label>
+				<div class="col-sm-8">
+					<input id="price" name="price" class="form-control" type="text">
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-sm-3 control-label">货品存量：</label>
+				<div class="col-sm-8">
+					<input id="inventory" name="inventory" class="form-control"
+						type="text">
+				</div>
+			</div>
+		</form>
+	</div>
+	<div th:include="include::footer"></div>
+	<script type="text/javascript">
+		var prefix = ctx + "system/stockGoods"
+		$("#form-stockGoods-add").validate({
+			rules:{
+				xxxx:{
+					required:true,
+				},
+			},
+			focusCleanup: true
+		});
+		
+		function submitHandler() {
+	        if ($.validate.form()) {
+	            $.operate.save(prefix + "/add", $('#form-stockGoods-add').serialize());
+	        }
+	    }
+	</script>
+</body>
+</html>

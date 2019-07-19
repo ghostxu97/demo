@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<!-- saved from url=(0025)http://localhost:8080/ -->
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon" />
+<title>GhostX</title>
+
+<link href="css/bootstrap.min.css" rel="stylesheet">
+<link href="font-awesome/css/font-awesome.css" rel="stylesheet">
+
+<!-- FooTable -->
+<link href="css/plugins/footable/footable.core.css" rel="stylesheet">
+
+<link href="css/animate.css" rel="stylesheet">
+<link href="css/style.css" rel="stylesheet">
+
+</head>
+<body class=" body-small pace-done">
+	<div class="pace  pace-inactive">
+		<div class="pace-progress" data-progress-text="100%"
+			data-progress="99" style="transform: translate3d(100%, 0px, 0px);">
+			<div class="pace-progress-inner"></div>
+		</div>
+		<div class="pace-activity"></div>
+	</div>
+
+	<div id="wrapper">
+
+		<nav class="navbar-default navbar-static-side" role="navigation"
+			style="">
+			<div class="sidebar-collapse">
+				<ul class="nav metismenu" id="side-menu">
+					<li class="nav-header">
+						<div class="dropdown profile-element">
+							<span> <img alt="image" class="img-circle"
+								src="img/profile_small.jpg">
+							</span> <span class="clear"> <span class="block m-t-xs"><strong
+									class="font-bold">Ghost X</strong> </span></span>
+						</div>
+						<div class="logo-element">IN+</div>
+					</li>
+					<li class="active"><a href="http://ghostxu.club/#"><i
+							class="fa fa-briefcase"></i> <span class="nav-label">生活小工具</span><span
+							class="fa arrow"></span></a>
+						<ul class="nav nav-second-level collapse in">
+							<li><a href="../trash.html">垃圾分类查询</a></li>
+						</ul></li>
+					<li class="active"><a href="http://localhost:8080/#"><i
+							class="fa fa-book"></i> <span class="nav-label">词典</span><span
+							class="fa arrow"></span></a>
+						<ul class="nav nav-second-level collapse in">
+							<li class="active"><a href="../index.html">成语</a></li>
+							<li><a href="../ciyu.html">词语</a></li>
+							<li><a href="../xiehouyu.html">歇后语</a></li>
+						</ul></li>
+				</ul>
+
+			</div>
+		</nav>
+
+		<div id="page-wrapper" class="gray-bg" style="min-height: 812px;">
+			<div class="row border-bottom">
+				<nav class="navbar navbar-static-top" role="navigation"
+					style="margin-bottom: 0">
+					<div class="navbar-header">
+						<a class="navbar-minimalize minimalize-styl-2 btn btn-primary "
+							href="http://localhost:8080/#"><i class="fa fa-bars"></i> </a>
+					</div>
+					<ul class="nav navbar-top-links navbar-right">
+						<li><span class="m-r-sm text-muted welcome-message"></span></li>
+						<li class="dropdown">
+							<ul class="dropdown-menu dropdown-messages">
+								<li>
+									<div class="dropdown-messages-box">
+										<a href="http://localhost:8080/profile.html" class="pull-left">
+											<img alt="image" class="img-circle" src="img/a7.jpg">
+										</a>
+									</div>
+								</li>
+								<li class="divider"></li>
+								<li>
+									<div class="dropdown-messages-box">
+										<a href="http://localhost:8080/profile.html" class="pull-left">
+											<img alt="image" class="img-circle" src="img/a4.jpg">
+										</a>
+										<div class="media-body ">
+											<small class="pull-right text-navy">5h ago</small> <strong>Chris
+												Johnatan Overtunk</strong> started following <strong>Monica
+												Smith</strong>. <br> <small class="text-muted">Yesterday
+												1:21 pm - 11.06.2014</small>
+										</div>
+									</div>
+								</li>
+								<li class="divider"></li>
+								<li>
+									<div class="dropdown-messages-box">
+										<a href="http://localhost:8080/profile.html" class="pull-left">
+											<img alt="image" class="img-circle" src="img/profile.jpg">
+										</a>
+										<div class="media-body ">
+											<small class="pull-right">23h ago</small> <strong>Monica
+												Smith</strong> love <strong>Kim Smith</strong>. <br> <small
+												class="text-muted">2 days ago at 2:30 am -
+												11.06.2014</small>
+										</div>
+									</div>
+								</li>
+								<li class="divider"></li>
+								<li>
+									<div class="text-center link-block">
+										<a href="http://localhost:8080/mailbox.html"> <i
+											class="fa fa-envelope"></i> <strong>Read All
+												Messages</strong>
+										</a>
+									</div>
+								</li>
+							</ul>
+						</li>
+
+						<li><a href="http://localhost:8080/#"> <i
+								class="fa fa-sign-out"></i> 注销
+						</a></li>
+					</ul>
+
+				</nav>
+			</div>
+			<div class="row wrapper border-bottom white-bg page-heading">
+				<div class="col-lg-10">
+					<h2>成语</h2>
+					<ol class="breadcrumb">
+						<li><a href="http://localhost:8080/#">主页</a></li>
+						<li><a>词典</a></li>
+						<li class="active"><strong>成语</strong></li>
+					</ol>
+				</div>
+			</div>
+			<div class="wrapper wrapper-content animated fadeInRight">
+				<div class="search-form">
+					<div class="input-group">
+						<select id="f_type2" name="f_type2"
+							style="float: right; width: 80px; height: 46px; margin-right: 5px;"
+							class="form-control m-b">
+							<option value="" selected="">所有</option>
+							<option value="1">开头</option>
+							<option value="2">结尾</option>
+						</select> <input type="text" placeholder="输入关键字" id="word"
+							class="form-control input-lg" style="float: right; width: 40%">
+						<div class="input-group-btn">
+							<input type="button" class="btn btn-lg btn-primary" style=""
+								id="search" value="搜索">
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div id="idiom_list" class="col-lg-12">
+						<table id="idiom_table"
+							class="footable table table-stripped toggle-arrow-tiny no-paging footable-loaded">
+							<thead>
+								<tr>
+
+
+
+
+									<!--   <th >出处</th>
+                                    <th  data-hide="">用例</th> -->
+								</tr>
+							</thead>
+							<tbody id="idiom_tbody">
+								<tr class="footable-even" style="">
+									<td>
+										<ul style="list-style-type: none; padding-left: 8px;">
+											<h2>
+												<strong>阿鼻地狱</strong>
+											</h2>
+											<li><strong>读音:&nbsp;&nbsp;</strong>ā bí dì yù</li>
+											<li><strong>解释:&nbsp;&nbsp;</strong>阿鼻梵语的译音，意译为无间”，即痛苦无有间断之意。常用来比喻黑暗的社会和严酷的牢狱。又比喻无法摆脱的极其痛苦的境地。</li>
+											<li><strong>出处:&nbsp;&nbsp;</strong>语出《法华经·法师功德品》下至阿鼻地狱。</li>
+											<li><strong>用例:&nbsp;&nbsp;</strong>但也有少数意志薄弱的……逐步上当，终至堕入～。★《上饶集中营·炼狱杂记》</li>
+										</ul>
+									</td>
+								</tr>
+								<tr class="footable-even" style="">
+									<td>
+										<ul style="list-style-type: none; padding-left: 8px;">
+											<h2>
+												<strong>阿党比周</strong>
+											</h2>
+											<li><strong>读音:&nbsp;&nbsp;</strong>ē dǎng bǐ zhōu</li>
+											<li><strong>解释:&nbsp;&nbsp;</strong>指相互勾结，相互偏袒，结党营私。</li>
+											<li><strong>出处:&nbsp;&nbsp;</strong>三国·魏·曹操《整齐风俗令》阿党比周，先圣所疾也。</li>
+											<li><strong>用例:&nbsp;&nbsp;</strong>《论语·卫灵公》众恶之，必察焉；众好之，必察焉”何晏集解引三国魏王肃曰或众～，或其人特立不群，故好恶不可不察也。”</li>
+										</ul>
+									</td>
+								</tr>
+								<tr class="footable-even" style="">
+									<td>
+										<ul style="list-style-type: none; padding-left: 8px;">
+											<h2>
+												<strong>阿党相为</strong>
+											</h2>
+											<li><strong>读音:&nbsp;&nbsp;</strong>ē dǎng xiāng wéi</li>
+											<li><strong>解释:&nbsp;&nbsp;</strong>阿党偏袒、偏私一方。为了谋求私利相互偏袒、包庇。</li>
+											<li><strong>出处:&nbsp;&nbsp;</strong>《汉书·诸葛丰传》今以四海之大，曾无伏节死谊之臣，率尽苟合取容，阿党相为，念私门之利，忘国家之政。</li>
+											<li><strong>用例:&nbsp;&nbsp;</strong>无</li>
+										</ul>
+									</td>
+								</tr>
+								<tr class="footable-even" style="">
+									<td>
+										<ul style="list-style-type: none; padding-left: 8px;">
+											<h2>
+												<strong>阿狗阿猫</strong>
+											</h2>
+											<li><strong>读音:&nbsp;&nbsp;</strong>ā gǒu ā māo</li>
+											<li><strong>解释:&nbsp;&nbsp;</strong>旧时人们常用的小名。引申为任何轻贱的，不值得重视的人或著作。</li>
+											<li><strong>出处:&nbsp;&nbsp;</strong>鲁迅《我们要批评家》然而新的批评家不开口，类似批评家之流便趁势一笔抹杀‘阿狗阿猫’。</li>
+											<li><strong>用例:&nbsp;&nbsp;</strong>无</li>
+										</ul>
+									</td>
+								</tr>
+								<tr class="footable-even" style="">
+									<td>
+										<ul style="list-style-type: none; padding-left: 8px;">
+											<h2>
+												<strong>阿姑阿翁</strong>
+											</h2>
+											<li><strong>读音:&nbsp;&nbsp;</strong>ā gū ā wēng</li>
+											<li><strong>解释:&nbsp;&nbsp;</strong>阿名词的前缀。姑丈夫的母亲。翁丈夫的父亲。指公公婆婆。</li>
+											<li><strong>出处:&nbsp;&nbsp;</strong>见阿家阿翁”。</li>
+											<li><strong>用例:&nbsp;&nbsp;</strong>既然如此，你我两个，便学个不痴不聋的～。★《儿女英雄传》二三回</li>
+										</ul>
+									</td>
+								</tr>
+								<tr class="footable-even" style="">
+									<td>
+										<ul style="list-style-type: none; padding-left: 8px;">
+											<h2>
+												<strong>阿家阿翁</strong>
+											</h2>
+											<li><strong>读音:&nbsp;&nbsp;</strong>ā gū ā wēng</li>
+											<li><strong>解释:&nbsp;&nbsp;</strong>阿名词的前缀。家通姑”，丈夫的母亲。翁丈夫的父亲。指公公婆婆。</li>
+											<li><strong>出处:&nbsp;&nbsp;</strong>唐·赵璾《因话录》卷一郭暖尝与升平公主琴瑟不调。尚父拘暖，自诣朝童结罪。上召而慰之曰‘谚云不痴不聋，不作阿家阿翁。</li>
+											<li><strong>用例:&nbsp;&nbsp;</strong>无</li>
+										</ul>
+									</td>
+								</tr>
+								<tr class="footable-even" style="">
+									<td>
+										<ul style="list-style-type: none; padding-left: 8px;">
+											<h2>
+												<strong>阿娇金屋</strong>
+											</h2>
+											<li><strong>读音:&nbsp;&nbsp;</strong>ā jiāo jīn wū</li>
+											<li><strong>解释:&nbsp;&nbsp;</strong>阿娇指汉武帝刘彻的姑母（长公主刘娇）的女儿。原指汉武帝刘彻要用金屋接纳阿娇为妇。这里泛指美丽高贵的女子。</li>
+											<li><strong>出处:&nbsp;&nbsp;</strong>语出旧题汉·班固《汉武故事》汉武帝幼时曾对姑母长公主说若得阿娇(姑母之女)作妇，当以金屋贮之。</li>
+											<li><strong>用例:&nbsp;&nbsp;</strong>～原相配，太其玉镜宁无时？★明·周履靖《锦笺记·诒婚》</li>
+										</ul>
+									</td>
+								</tr>
+								<tr class="footable-even" style="">
+									<td>
+										<ul style="list-style-type: none; padding-left: 8px;">
+											<h2>
+												<strong>阿猫阿狗</strong>
+											</h2>
+											<li><strong>读音:&nbsp;&nbsp;</strong>ā māo ā gǒu</li>
+											<li><strong>解释:&nbsp;&nbsp;</strong>旧时人们常用的小名。引申为任何轻贱的，不值得重视的人或著作。</li>
+											<li><strong>出处:&nbsp;&nbsp;</strong>鲁迅《我的第一个师父》这和名孩子为阿猫阿狗，完全是一样的意思容易养大。</li>
+											<li><strong>用例:&nbsp;&nbsp;</strong>在德国无论～见面，一律互相举手高喊希特勒万岁”。★邹韬奋《法西斯作风的罪恶》</li>
+										</ul>
+									</td>
+								</tr>
+								<tr class="footable-even" style="">
+									<td>
+										<ul style="list-style-type: none; padding-left: 8px;">
+											<h2>
+												<strong>阿弥陀佛</strong>
+											</h2>
+											<li><strong>读音:&nbsp;&nbsp;</strong>ē mí tuó fó</li>
+											<li><strong>解释:&nbsp;&nbsp;</strong>佛教语，信佛的人用作口头诵颂的佛号，表示祈祷祝福或感谢神灵的意思。</li>
+											<li><strong>出处:&nbsp;&nbsp;</strong>元·张国宾《合汗衫》第四折张寿友曰‘阿弥陀佛，这个是谁？’卜儿云‘这便是媳妇儿。</li>
+											<li><strong>用例:&nbsp;&nbsp;</strong>和尚念经，～。</li>
+										</ul>
+									</td>
+								</tr>
+								<tr class="footable-even" style="">
+									<td>
+										<ul style="list-style-type: none; padding-left: 8px;">
+											<h2>
+												<strong>阿毗地狱</strong>
+											</h2>
+											<li><strong>读音:&nbsp;&nbsp;</strong>ā pí dì yù</li>
+											<li><strong>解释:&nbsp;&nbsp;</strong>阿毗梵语的译音，意译为无间”，即痛苦无有间断之意。常用来比喻黑暗的社会和严酷的牢狱。又比喻无法摆脱的极其痛苦的境地。</li>
+											<li><strong>出处:&nbsp;&nbsp;</strong>见阿鼻地狱”。</li>
+											<li><strong>用例:&nbsp;&nbsp;</strong>生前不曾修福，死堕～。★《敦煌变文集·妙法莲花经讲经文》</li>
+										</ul>
+									</td>
+								</tr>
+								<tr class="footable-even" style="">
+									<td>
+										<ul style="list-style-type: none; padding-left: 8px;">
+											<h2>
+												<strong>阿平绝倒</strong>
+											</h2>
+											<li><strong>读音:&nbsp;&nbsp;</strong>ā píng jué dǎo</li>
+											<li><strong>解释:&nbsp;&nbsp;</strong>以之比喻对对方的言论极为佩服。亦用为讥讽言论极为乖谬，常贻笑大方。</li>
+											<li><strong>出处:&nbsp;&nbsp;</strong>据《晋书·卫玠传》及《王澄传》载玠好言玄理。琅玡王澄字平子，兄昵称之曰阿平”。有高名，少所推许，每闻玠言，辄叹息绝倒。故时为之语曰卫玠谈道，平子绝倒。</li>
+											<li><strong>用例:&nbsp;&nbsp;</strong>无</li>
+										</ul>
+									</td>
+								</tr>
+								<tr class="footable-even" style="">
+									<td>
+										<ul style="list-style-type: none; padding-left: 8px;">
+											<h2>
+												<strong>阿其所好</strong>
+											</h2>
+											<li><strong>读音:&nbsp;&nbsp;</strong>ē qí suǒ hào</li>
+											<li><strong>解释:&nbsp;&nbsp;</strong>阿曲从；其他的；好爱好。指为取得某人的好感而迎合他的爱好。</li>
+											<li><strong>出处:&nbsp;&nbsp;</strong>《孟子·公孙丑上》宰我、子贡、有若，智足以知圣人，污不至阿其所好。</li>
+											<li><strong>用例:&nbsp;&nbsp;</strong>吾何能～为？★鲁迅《坟·摩罗诗力说》</li>
+										</ul>
+									</td>
+								</tr>
+								<tr class="footable-even" style="">
+									<td>
+										<ul style="list-style-type: none; padding-left: 8px;">
+											<h2>
+												<strong>阿时趋俗</strong>
+											</h2>
+											<li><strong>读音:&nbsp;&nbsp;</strong>ē shí qū sú</li>
+											<li><strong>解释:&nbsp;&nbsp;</strong>阿迎合。迎合时尚和世俗。</li>
+											<li><strong>出处:&nbsp;&nbsp;</strong>恽代英《再复毕几庵书》故办杂志者，当研究社会心理。然此决非阿时趋俗，只以顺其势而利导之耳。</li>
+											<li><strong>用例:&nbsp;&nbsp;</strong>无</li>
+										</ul>
+									</td>
+								</tr>
+								<tr class="footable-even" style="">
+									<td>
+										<ul style="list-style-type: none; padding-left: 8px;">
+											<h2>
+												<strong>阿世盗名</strong>
+											</h2>
+											<li><strong>读音:&nbsp;&nbsp;</strong>ē shì dào míng</li>
+											<li><strong>解释:&nbsp;&nbsp;</strong>阿世曲意博取世人的欢心。用博取世人的欢心的方法来窃取名誉。</li>
+											<li><strong>出处:&nbsp;&nbsp;</strong>清·梁启超《新民说》才智之士，既得此以为阿世盗名之一秘钥，于是名节闲检，荡然无所顾复。</li>
+											<li><strong>用例:&nbsp;&nbsp;</strong>无</li>
+										</ul>
+									</td>
+								</tr>
+								<tr class="footable-even" style="">
+									<td>
+										<ul style="list-style-type: none; padding-left: 8px;">
+											<h2>
+												<strong>阿世媚俗</strong>
+											</h2>
+											<li><strong>读音:&nbsp;&nbsp;</strong>ē shì mèi sú</li>
+											<li><strong>解释:&nbsp;&nbsp;</strong>指曲意迎合当时社会的陈规陋俗。</li>
+											<li><strong>出处:&nbsp;&nbsp;</strong>鲁迅《坟·文化偏至论》如其《民敌》一书，谓有人宝守真理，不阿世媚俗，而不见容于人群。</li>
+											<li><strong>用例:&nbsp;&nbsp;</strong>无</li>
+										</ul>
+									</td>
+								</tr>
+								<tr class="footable-even" style="">
+									<td>
+										<ul style="list-style-type: none; padding-left: 8px;">
+											<h2>
+												<strong>阿世取容</strong>
+											</h2>
+											<li><strong>读音:&nbsp;&nbsp;</strong>ē shì qǔ róng</li>
+											<li><strong>解释:&nbsp;&nbsp;</strong>指迎合世俗，取悦于人。</li>
+											<li><strong>出处:&nbsp;&nbsp;</strong>鲁迅《汉文学史纲要》第六篇至叔孙通，则正以曲学容，非重其能定朝仪，知典礼也。</li>
+											<li><strong>用例:&nbsp;&nbsp;</strong>叙述西汉儒学，应该看到多数～的章名小儒，也应该看到少数同情人民的正统儒者。★范文澜蔡美彪等《中国通史》第二编第二章第九节</li>
+										</ul>
+									</td>
+								</tr>
+								<tr class="footable-even" style="">
+									<td>
+										<ul style="list-style-type: none; padding-left: 8px;">
+											<h2>
+												<strong>阿意取容</strong>
+											</h2>
+											<li><strong>读音:&nbsp;&nbsp;</strong>ē yì qǔ róng</li>
+											<li><strong>解释:&nbsp;&nbsp;</strong>指曲从其意，以取悦于人。</li>
+											<li><strong>出处:&nbsp;&nbsp;</strong>《南史·孝义传下·陶季直》季直不能阿意取容，明帝颇忌之，出为辅国长史、北海太守。</li>
+											<li><strong>用例:&nbsp;&nbsp;</strong>当英景之间，国势初更，人心观望，执政任事之臣多～。★《明史·高穣胡濙等赞》</li>
+										</ul>
+									</td>
+								</tr>
+								<tr class="footable-even" style="">
+									<td>
+										<ul style="list-style-type: none; padding-left: 8px;">
+											<h2>
+												<strong>阿谀谄媚</strong>
+											</h2>
+											<li><strong>读音:&nbsp;&nbsp;</strong>ē yú chǎn mèi</li>
+											<li><strong>解释:&nbsp;&nbsp;</strong>阿谀迎合别人的意思，向人讨好；谄媚巴结，奉承。说话做事迎合别人的心意，竭力向人讨好。</li>
+											<li><strong>出处:&nbsp;&nbsp;</strong>明·冯梦龙《喻世明言·裴晋公义还原配》只是这帮阿谀谄媚的，要博相国欢喜，自然重价购买。</li>
+											<li><strong>用例:&nbsp;&nbsp;</strong>无</li>
+										</ul>
+									</td>
+								</tr>
+								<tr class="footable-even" style="">
+									<td>
+										<ul style="list-style-type: none; padding-left: 8px;">
+											<h2>
+												<strong>阿谀逢迎</strong>
+											</h2>
+											<li><strong>读音:&nbsp;&nbsp;</strong>ē yú féng yíng</li>
+											<li><strong>解释:&nbsp;&nbsp;</strong>阿谀用言语恭维别人；逢迎迎合别人的心意。奉承，拍马，讨好别人。</li>
+											<li><strong>出处:&nbsp;&nbsp;</strong>《二程全书·伊川易传一》周之与否在君而已，不可阿谀奉迎求其比己也。</li>
+											<li><strong>用例:&nbsp;&nbsp;</strong>其时京师有一流棍，名叫李光，专一～，谄事令孜。★明·凌濛初《初刻拍案惊奇》卷二十二</li>
+										</ul>
+									</td>
+								</tr>
+								<tr class="footable-even" style="">
+									<td>
+										<ul style="list-style-type: none; padding-left: 8px;">
+											<h2>
+												<strong>阿谀奉承</strong>
+											</h2>
+											<li><strong>读音:&nbsp;&nbsp;</strong>ē yú fèng chéng</li>
+											<li><strong>解释:&nbsp;&nbsp;</strong>阿谀用言语恭维别人；奉承恭维，讨好。曲从拍马，迎合别人，竭力向人讨好。</li>
+											<li><strong>出处:&nbsp;&nbsp;</strong>明·东鲁古狂生《醉醒石》第八回他却小器易盈，况且是个小人，在人前不过一味阿谀奉承。</li>
+											<li><strong>用例:&nbsp;&nbsp;</strong>无</li>
+										</ul>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- Mainly scripts -->
+	<script src="js/jquery-3.1.1.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script src="js/plugins/metisMenu/jquery.metisMenu.js"></script>
+	<script src="js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+	<script src="js/idiom.js"></script>
+	<!-- FooTable -->
+	<script src="js/plugins/footable/footable.all.min.js"></script>
+
+	<!-- Custom and plugin javascript -->
+	<script src="js/inspinia.js"></script>
+	<script src="js/plugins/pace/pace.min.js"></script>
+	<script src="js/vue.min.js"></script>
+
+	<!-- Page-Level Scripts -->
+	<script>
+        $(document).ready(function() {
+
+            $('.footable').footable();
+            $('.footable2').footable();
+
+        });
+
+    </script>
+
+
+
+
+</body>
+</html>
